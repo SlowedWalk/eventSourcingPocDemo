@@ -1,4 +1,4 @@
-package tech.hidetora;
+package tech.hidetora.coreAPI;
 
 /**
  * Hello world!

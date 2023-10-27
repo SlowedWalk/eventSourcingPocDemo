@@ -12,15 +12,17 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
+import static tech.hidetora.coreAPI.constants.Constants.*;
+
 @Slf4j
 @RestController
-@RequestMapping("/customer/command")
+@RequestMapping(BASE_URL)
 @RequiredArgsConstructor
 public class CustomerCommandController {
     private final CommandGateway commandGateway;
     private final EventStore eventStore;
 
-    @PostMapping("/create")
+    @PostMapping(CREATE_CUSTOMER_URL)
     public CompletableFuture<String> createCustomer(@RequestBody CustomerRequestDTO request) {
         return commandGateway.send(new CreateCustomerCommand(
                 UUID.randomUUID().toString(),
@@ -29,7 +31,7 @@ public class CustomerCommandController {
         ));
     }
 
-    @GetMapping("/eventStore/{customerId}")
+    @GetMapping(GET_CUSTOMER_STORE_URL)
     public Stream eventStore(@PathVariable String customerId) {
         return eventStore.readEvents(customerId).asStream();
     }

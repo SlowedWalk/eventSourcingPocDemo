@@ -24,7 +24,9 @@ public class CustomerAggregate {
 
     @CommandHandler
     public CustomerAggregate(CreateCustomerCommand command) {
-        log.info("CREATE CUSTOMER COMMAND TRIGGERED");
+        log.info("📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥");
+        log.info("📥📥📥 CREATE CUSTOMER COMMAND TRIGGERED 📥📥📥");
+        log.info("📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥");
         AggregateLifecycle.apply(new CustomerCreatedEvent(
                 command.getId(),
                 command.getName(),
@@ -34,7 +36,9 @@ public class CustomerAggregate {
 
     @EventSourcingHandler
     public void on(CustomerCreatedEvent event) {
-        log.info("CUSTOMER CREATED EVENT OCCURRED");
+        log.info("📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥");
+        log.info("📥📥📥 CUSTOMER CREATED EVENT OCCURRED 📥📥📥");
+        log.info("📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥📥");
         this.id = event.getId();
         this.name = event.getName();
         this.email = event.getEmail();
